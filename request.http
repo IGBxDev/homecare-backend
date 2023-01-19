@@ -2,12 +2,26 @@ POST http://localhost:3333/users HTTP/1.1
 Content-Type: application/json
 
 {
-     "name": "ssddsds",
-     "email": "teste22w@gmail.com",
-     "password": "ds"
+     "name": "suport",
+     "email": "suport@homecare.com.br",
+     "password": "123456"
 }
 
 ###
 DELETE http://localhost:3333/users/63b6baba88e76428f8d0c68d HTTP/1.1
 Content-Type: application/json
+
+###
+GET http://localhost:3333/users HTTP/1.1
+Content-Type: application/json
+
+
+###
+PUT http://localhost:3333/users/63c8a3f70d04ec442497bd91 HTTP/1.1
+Content-Type: application/json
+
+{
+     "name": "suporte",
+     "email": "suport@homecare.com.br"
+}
 

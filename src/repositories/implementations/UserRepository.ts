@@ -2,6 +2,7 @@ import { User } from "../../entities/User";
 import { IUsersRepository } from "../IUsersRepository";
 import { ObjectID, Repository } from "typeorm";
 import { IDataSourse } from "../../dataBase/IDataSourse";
+import { IEditUserRequestDTO } from "../../useCases/User/EditUser/IEditUserDTO";
 
 export class UserRepository implements IUsersRepository{
     private repository: Repository<User>
@@ -10,6 +11,17 @@ export class UserRepository implements IUsersRepository{
         private dataSourse: IDataSourse
     ){
        this.initialize()        
+    }
+    async update(user: IEditUserRequestDTO): Promise<void> {
+         this.repository.update(user.id, user)
+    }
+    
+    async findById(id: string): Promise<User[]> {
+        return await this.repository.findBy({ _id: id })
+    }
+    
+    async findAll(): Promise<User[]> {
+       return await this.repository.find();
     }
 
     async deleteById(id: string): Promise<void> {
@@ -22,8 +34,7 @@ export class UserRepository implements IUsersRepository{
     }
 
     async findByEmail(email: string): Promise<User[]> {
-        const user = await this.repository.findBy({ email: email });
-        return user
+        return await this.repository.findBy({ email: email });
     }
     
     async save(user: User): Promise<void> {

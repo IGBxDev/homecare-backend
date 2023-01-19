@@ -1,7 +1,7 @@
-import { User } from "../../entities/User";
-import { IMailProvider } from "../../providers/IMailProvider";
-import { IUsersRepository } from "../../repositories/IUsersRepository";
-import { CustomErro } from "../Error/CustomError";
+import { User } from "../../../entities/User";
+import { IMailProvider } from "../../../providers/IMailProvider";
+import { IUsersRepository } from "../../../repositories/IUsersRepository";
+import { CustomErro } from "../../Error/CustomError";
 import { InvalidEmail, UserAlreadyExists } from "./CreateUserErrors";
 import { ICreateUserRequestDTO } from "./ICreateUserDTO";
 

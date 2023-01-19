@@ -1,5 +1,5 @@
-import { IUsersRepository } from "../../repositories/IUsersRepository";
-import {CustomErro, EmptiryId} from '../Error/CustomError'
+import { IUsersRepository } from "../../../repositories/IUsersRepository";
+import {CustomErro, EmptiryId} from '../../Error/CustomError'
 
 export class DeleteUserCase {
 

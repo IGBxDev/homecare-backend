@@ -1,8 +1,8 @@
-import { UserRepository } from "../../repositories/implementations/UserRepository";
+import { UserRepository } from "../../../repositories/implementations/UserRepository";
 import { DeleteUserController } from "./DeleteUserController";
 import { DeleteUserCase } from "./DeleteUserCase";
-import { AppDataSource } from "../../data-source";
-import { DataSourceConnection } from "../../dataBase/DataSourceConnection";
+import { AppDataSource } from "../../../data-source";
+import { DataSourceConnection } from "../../../dataBase/DataSourceConnection";
 
 
 const dataSourse = new DataSourceConnection(AppDataSource);

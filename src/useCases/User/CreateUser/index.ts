@@ -1,9 +1,9 @@
-import { MailTrapMailProvider } from "../../providers/implementations/MailTrapProvider";
-import { UserRepository } from "../../repositories/implementations/UserRepository";
+import { MailTrapMailProvider } from "../../../providers/implementations/MailTrapProvider";
+import { UserRepository } from "../../../repositories/implementations/UserRepository";
 import { CreateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
-import { AppDataSource } from "../../data-source";
-import { DataSourceConnection } from "../../dataBase/DataSourceConnection";
+import { AppDataSource } from "../../../data-source";
+import { DataSourceConnection } from "../../../dataBase/DataSourceConnection";
 
 const mailtrapMailProvider = new MailTrapMailProvider()
 const dataSourse = new DataSourceConnection(AppDataSource);
