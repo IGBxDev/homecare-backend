@@ -3,6 +3,7 @@ import { createUserController } from "./useCases/User/CreateUser";
 import { deleteUserController } from "./useCases/User/DeleteUser";
 import { getUserController } from './useCases/User/GetUser'
 import { editUserController } from './useCases/User/EditUser'
+import { createProfessionalController } from './useCases/Professional/CreateProfessional'
 
 const router = Router()
 
@@ -21,5 +22,10 @@ router.get('/users', (request, response) =>{
 router.put('/users/:id', (request, response) =>{
     return editUserController.handle(request, response)
 })
+
+router.post('/professional', (request, response) =>{
+    return createProfessionalController.handle(request, response)
+})
+
 
 export { router }

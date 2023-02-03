@@ -25,3 +25,33 @@ Content-Type: application/json
      "email": "suport@homecare.com.br"
 }
 
+
+###
+POST http://localhost:3333/professional HTTP/1.1
+Content-Type: application/json
+
+{
+    "fullName": "Novo usuário",
+    "email": "teste@email.com.br",
+    "mobile": "+55 (11) 91111-1111",
+    "cpf": "114.222.222.01",
+    "boardNumber": "565898/125",
+    "regionZone": 2,
+    "address": {
+          "logradouro": "Rua Doutor Araujo Castro",
+          "number": "60",
+          "city": "São Paulo",
+          "uf": "SP",
+          "postalCode": "02649-010",
+          "complement": "Casa 3"
+    }, 
+    "bankAccount": [{
+          "accountNumber": "0715372-4",
+          "agencyNumber": "0545",
+          "bankCode": "137",
+          "accountType": 1
+    }],
+    "specialty": [{
+     "description": "Enfermeiro"
+    }]
+}

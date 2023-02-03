@@ -16,11 +16,13 @@
 
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts",
 
-    "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/dataBase/migrations/default",
+    "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/dataBase/migrations/",
 
-    "migration:create": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:create ./src/dataBase/migrations/default",
+    "migration:create": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:create ./src/dataBase/migrations/",
 
-    "migration:run": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run"
+    "migration:run": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run",
+
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
 
   },
 
@@ -57,6 +59,8 @@
     "@types/nodemailer": "^6.4.6",
 
     "ts-node-dev": "^2.0.0",
+
+    "tsconfig-paths": "^4.1.2",
 
     "typescript": "^4.9.4"
 
