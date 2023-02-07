@@ -26,12 +26,15 @@ export class Professional{
     public boardNumber: string
 
     @Column( (type) => Region)
-    public regionZone: Region
+    public regionZoneCode: Region
+
+    @Column({ comment: 'Descrição da região, Zona Norte, Zona Sul, Zona Oeste, Zona Leste ou Zona Central' })
+    public regionZoneDescription: string
 
     @Column( (type) => Address )
     address: Address
 
-    @Column( (type) => BankAccount )
+    @Column((type) => BankAccount )
     public bankAccount: BankAccount[]
     
 

@@ -5,4 +5,5 @@ export interface IProfessionalRepository{
     findByAddress(): Promise<Professional[]>
     save(professional: Professional): Promise<void>
     findAll(): Promise<Professional[]>
+    deleteById(id: string): Promise<void>
 }

@@ -6,4 +6,8 @@ export class Region{
 
     @Column()
     public region: RegionEnum
+
+    constructor(region: RegionEnum){
+        this.region = region
+    }
 }

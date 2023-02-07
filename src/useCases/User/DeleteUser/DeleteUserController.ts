@@ -11,11 +11,12 @@ export class DeleteUserController{
     async handle(request: Request, response: Response): Promise<Response>{
         try {
             const { id } = request.params
+            
             const useDelete: IDeleteUserRequestDTO = {
                 id
-            }            
+            }
 
-            await this.deleteUserCase.execute(useDelete)
+            this.deleteUserCase.execute(useDelete)
 
             response.status(204).send()
 

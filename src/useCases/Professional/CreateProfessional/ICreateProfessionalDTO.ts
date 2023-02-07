@@ -9,7 +9,8 @@ export interface ICreateProfessionalRequestDTO{
     mobile: string
     cpf: string
     boardNumber: string
-    regionZone: Region
+    regionZoneCode: Region
+    regionZoneDescription: string
     address: Address
     bankAccount: BankAccount[]
     specialty: Specialty[]

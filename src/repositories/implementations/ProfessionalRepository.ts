@@ -11,6 +11,9 @@ export class ProfessionalRepository implements IProfessionalRepository{
     ){
        this.initialize()        
     }
+    async deleteById(id: string): Promise<void> {
+        await this.repository.update(id,{ isActive: false })
+    }
     async initialize(){
         const dbConnection = await this.dataSourse.connection()
         this.repository = dbConnection.getRepository(Professional)
