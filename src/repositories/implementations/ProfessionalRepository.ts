@@ -2,9 +2,10 @@ import { Repository } from "typeorm";
 import { IDataSourse } from "../../dataBase/IDataSourse";
 import { Professional } from "../../entities/Professional";
 import { IProfessionalRepository } from "../IProfessionalRepository";
+import { BaseRepository } from "./BaseRepository";
 
 
-export class ProfessionalRepository implements IProfessionalRepository{
+export class ProfessionalRepository implements IProfessionalRepository {
     private repository: Repository<Professional>
     constructor(
         private dataSourse: IDataSourse
