@@ -25,8 +25,8 @@ export class Professional{
     @Column({ comment: 'Número do conselho' })
     public boardNumber: string
 
-    @Column( (type) => Region)
-    public regionZoneCode: Region
+    @Column()
+    public regionZoneCode: number
 
     @Column({ comment: 'Descrição da região, Zona Norte, Zona Sul, Zona Oeste, Zona Leste ou Zona Central' })
     public regionZoneDescription: string

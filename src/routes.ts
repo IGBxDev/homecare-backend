@@ -7,6 +7,8 @@ import { createProfessionalController } from './useCases/Professional/CreateProf
 import { deleteProfessionalController } from "./useCases/Professional/DeleteProfessional";
 import { getCepController } from "./useCases/CEP";
 import { getCnpjController } from "./useCases/CNPJ";
+import { createPatientController } from "./useCases/Patient/CreatePatient";
+import { deletePatientController } from "./useCases/Patient/DeletePatient";
 
 const router = Router()
 
@@ -40,6 +42,15 @@ router.get('/cep/:cep', (request, response) =>{
 
 router.get('/cnpj/:cnpj', (request, response) =>{
     return getCnpjController.handle(request, response)
+})
+
+router.post('/patient', (request, response) =>{
+    return createPatientController.handle(request, response)
+})
+
+
+router.post('/patient', (request, response) =>{
+    return deletePatientController.handle(request, response)
 })
 
 export { router }

@@ -29,7 +29,7 @@ export class ProfessionalRepository implements IProfessionalRepository{
        this.repository.save(professional)
     }
     findAll(): Promise<Professional[]> {
-        throw new Error("Method not implemented.");
+       return this.repository.find();
     }
     
 }

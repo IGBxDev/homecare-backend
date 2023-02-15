@@ -1,7 +1,4 @@
-
-import { CustomError } from 'ts-custom-error'
-
-export class InvalidEmail extends CustomError{
+export class InvalidEmail extends Error{
     statusCode = 400
     constructor(){
         super('E-mail invalido')
@@ -15,7 +12,7 @@ export class InvalidEmail extends CustomError{
     }
 }
 
-export class InvalidEmailNotFound extends CustomError{
+export class InvalidEmailNotFound extends Error{
     statusCode = 400
     constructor(){
         super('E-mail não informado')
@@ -29,7 +26,7 @@ export class InvalidEmailNotFound extends CustomError{
     }
 }
 
-export class InvalidFullName extends CustomError{
+export class InvalidFullName extends Error{
     statusCode = 400
     constructor(){
         super('Nome não informado')
@@ -43,7 +40,7 @@ export class InvalidFullName extends CustomError{
     }
 }
 
-export class InvalidMobile extends CustomError{
+export class InvalidMobile extends Error{
     statusCode = 400
     constructor(){
         super('Telefone não informado')
@@ -57,7 +54,7 @@ export class InvalidMobile extends CustomError{
     }
 }
 
-export class InvalidCPF extends CustomError{
+export class InvalidCPF extends Error{
     statusCode = 400
     constructor(){
         super('CPF nõ informado')
@@ -71,7 +68,7 @@ export class InvalidCPF extends CustomError{
     }
 }
 
-export class InvalidBoardNumber extends CustomError{
+export class InvalidBoardNumber extends Error{
     statusCode = 400
     constructor(){
         super('Número do conselho não informado')
@@ -85,7 +82,7 @@ export class InvalidBoardNumber extends CustomError{
     }
 }
 
-export class InvalidRegion extends CustomError{
+export class InvalidRegion extends Error{
     statusCode = 400
     constructor(){
         super('Região não informado')
@@ -99,7 +96,7 @@ export class InvalidRegion extends CustomError{
     }
 }
 
-export class InvalidBankAccount extends CustomError{
+export class InvalidBankAccount extends Error{
     statusCode = 400
     constructor(){
         super('Dados bancário não informado')
@@ -114,7 +111,7 @@ export class InvalidBankAccount extends CustomError{
 }
 
 
-export class InvalidSpecialty extends CustomError{
+export class InvalidSpecialty extends Error{
     statusCode = 400
     constructor(){
         super('Especialidade não informada')
@@ -129,7 +126,7 @@ export class InvalidSpecialty extends CustomError{
 }
 
 
-export class InvalidCity extends CustomError{
+export class InvalidCity extends Error{
     statusCode = 400
     constructor(){
         super('Cidade não informado')
@@ -144,7 +141,7 @@ export class InvalidCity extends CustomError{
 }
 
 
-export class InvalidLogradouro extends CustomError{
+export class InvalidLogradouro extends Error{
     statusCode = 400
     constructor(){
         super('Endereço não informado')
@@ -159,7 +156,7 @@ export class InvalidLogradouro extends CustomError{
 }
 
 
-export class InvalidNumber extends CustomError{
+export class InvalidNumber extends Error{
     statusCode = 400
     constructor(){
         super('Número da residência não informado')
@@ -173,7 +170,7 @@ export class InvalidNumber extends CustomError{
     }
 }
 
-export class InvalidPostalCode extends CustomError{
+export class InvalidPostalCode extends Error{
     statusCode = 400
     constructor(){
         super('cep não informado')
@@ -188,7 +185,7 @@ export class InvalidPostalCode extends CustomError{
 }
 
 
-export class InvalidUF extends CustomError{
+export class InvalidUF extends Error{
     statusCode = 400
     constructor(){
         super('UF não informado')
@@ -197,6 +194,20 @@ export class InvalidUF extends CustomError{
 
     serializeErrors(){
         return[{
+            statusCode: this.statusCode
+        },]
+    }
+}
+
+export class InvalidRegionCode extends Error{
+    statusCode = 400
+    constructor(){
+        super('Código da Região invalido')
+        Object.setPrototypeOf(this, InvalidRegionCode.prototype)
+    }
+
+    serializeErrors(){
+        return [{
             statusCode: this.statusCode
         },]
     }

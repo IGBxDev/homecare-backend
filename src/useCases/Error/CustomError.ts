@@ -1,12 +1,10 @@
-import { CustomError} from 'ts-custom-error'
-
-export class CustomErro extends Error{
+export class CustomError extends Error{
     private statusCode: number
 
     constructor(message: string, statusCode: number ){        
         super(message)
         this.statusCode = statusCode
-        Object.setPrototypeOf(this, CustomErro.prototype);
+        Object.setPrototypeOf(this, CustomError.prototype);
     }
 
     serializeErrors() {
@@ -19,11 +17,11 @@ export class CustomErro extends Error{
 }
  
 
-export class EmptiryId extends CustomError{
+export class EmptyId extends Error{
   statusCode = 400
   constructor(){
     super("Necessário informar um id")
-    Object.setPrototypeOf(this, EmptiryId.prototype)
+    Object.setPrototypeOf(this, EmptyId.prototype)
   }
 
   serializeErrors(){
