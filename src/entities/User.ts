@@ -1,4 +1,4 @@
-import { Entity, Column, ObjectIdColumn } from 'typeorm'
+import { Entity, Column, ObjectIdColumn, CreateDateColumn } from 'typeorm'
 
 @Entity("Users")
 export class User {
@@ -14,6 +14,9 @@ export class User {
     
     @Column()
     public password: string;
+
+    @CreateDateColumn()
+    created_at: Date
 
     @Column('boolean', {default: true , nullable: false})
     public isActive: boolean;

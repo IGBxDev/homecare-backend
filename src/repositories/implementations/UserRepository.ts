@@ -1,15 +1,17 @@
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../IUsersRepository";
-import { ObjectID, Repository } from "typeorm";
+import { BaseEntity, ObjectID, Repository } from "typeorm";
 import { IDataSourse } from "../../dataBase/IDataSourse";
 import { IEditUserRequestDTO } from "../../useCases/User/EditUser/IEditUserDTO";
+import { BaseRepository } from "./BaseRepository";
 
-export class UserRepository implements IUsersRepository{
+export class UserRepository extends BaseRepository<User> implements IUsersRepository{
     private repository: Repository<User>
 
     constructor(
         private dataSourse: IDataSourse
     ){
+        super()
        this.initialize()        
     }
     async update(user: IEditUserRequestDTO): Promise<void> {
@@ -37,7 +39,9 @@ export class UserRepository implements IUsersRepository{
         return await this.repository.findBy({ email: email });
     }
     
-    async save(user: User): Promise<void> {
-        this.repository.insert(user)        
+    public async save(user: User): Promise<void> {
+        // this.repository.insert(user)      
+        this.save(user)
+        
     }
 }

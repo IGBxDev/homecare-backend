@@ -1,14 +1,14 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, ObjectIdColumn } from "typeorm";
 import { StatusEnum } from "./enum/StatusEnum";
 import { Patient } from "./Patient";
-import { PatientScheduling } from "./PatientScheduling";
+import { PatientSchedule } from "./PatientSchedule";
 import { Professional } from "./Professional";
 
 @Entity('AppointmentScheduling')
-export class AppointmentScheduling{
+export class AppointmentSchedule{
 
-    @Column()
-    private readonly id: string
+    @ObjectIdColumn()
+    public readonly _id: string
 
     @Column( type => Professional)
     public professional: Professional
@@ -16,8 +16,8 @@ export class AppointmentScheduling{
     @Column()
     private registrationDate: Date
 
-    @Column(type => PatientScheduling)
-    public patientScheduling: PatientScheduling
+    @Column(type => PatientSchedule)
+    public patientScheduling: PatientSchedule
 
     @Column()
     public startDateShift: Date

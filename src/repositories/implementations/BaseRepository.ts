@@ -1,9 +1,10 @@
+import { BaseEntity, EntityManager, Repository } from "typeorm";
 import { IBaseRepository } from "../IBaseRepository";
 
-export class BaseRepository implements IBaseRepository{
+export class BaseRepository<T extends Object> implements IBaseRepository<T>{
     
-    save(entity: Object): Promise<void> {
-        throw new Error("Method not implemented.");
+    async save(entity: T): Promise<void> {
+        this.save(entity)
     }
 
 }

@@ -1,7 +1,7 @@
 import { User } from "../../../entities/User";
 import { IMailProvider } from "../../../providers/IMailProvider";
 import { IUsersRepository } from "../../../repositories/IUsersRepository";
-import { CustomErro } from "../../Error/CustomError";
+import { CustomError } from "../../Error/CustomError";
 import { InvalidEmail, UserAlreadyExists } from "./CreateUserErrors";
 import { ICreateUserRequestDTO } from "./ICreateUserDTO";
 
@@ -27,7 +27,7 @@ export class CreateUserUseCase {
     
             const user = new User(data)
     
-            await this.usersRepository.save(user)
+            await this.usersRepository
     
             // await this.mailProvider.sendMail({
             //     to: {
@@ -42,7 +42,7 @@ export class CreateUserUseCase {
             //     body: "<p>Você já pode fazer login em nossa plataforma </p>"
             // })   
         } catch (error) {
-            throw new CustomErro(error.message, error.statusCode)
+            throw new CustomError(error.message, error.statusCode)
         }
     }
 }

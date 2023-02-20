@@ -1,13 +1,8 @@
-import { StatusEnum } from "../entities/enum/StatusEnum"
-import { PatientScheduling } from "../entities/PatientScheduling"
-import { Professional } from "../entities/Professional"
+import { AppointmentScheduling } from "../entities/AppointmentSchedule"
 
 export interface IAppointmentSchedulingRepository{
-     professional: Professional    
-     registrationDate: Date    
-     patiendScheduling: PatientScheduling    
-     value: number    
-     statusCode: StatusEnum    
-     statusDescription: string    
-     careRecord: string
+     save(data: AppointmentScheduling ): Promise<void>
+     findAll():Promise<AppointmentScheduling[]>
+     findById(id: string): Promise<AppointmentScheduling[]>
+     deleteById(id: string): Promise<void>
 }
