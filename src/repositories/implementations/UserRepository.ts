@@ -1,33 +1,35 @@
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../IUsersRepository";
-import { BaseEntity, ObjectID, Repository } from "typeorm";
+import { Repository } from "typeorm";
 import { IDataSourse } from "../../dataBase/IDataSourse";
 import { IEditUserRequestDTO } from "../../useCases/User/EditUser/IEditUserDTO";
 import { BaseRepository } from "./BaseRepository";
+import { CustomError } from "../../useCases/Error/CustomError";
 
-export class UserRepository extends BaseRepository<User> implements IUsersRepository{
-    private repository: Repository<User>
-
+export class UserRepository extends BaseRepository implements IUsersRepository {        
+    
     constructor(
-        private dataSourse: IDataSourse
+        public dataSourse: IDataSourse
     ){
-        super()
-       this.initialize()        
+        super()        
+        this.initialize()
     }
-    async update(user: IEditUserRequestDTO): Promise<void> {
-         this.repository.update(user.id, user)
+    
+    async edit(user: IEditUserRequestDTO): Promise<void> {
+         this.update(user)
     }
     
     async findById(id: string): Promise<User[]> {
-        return await this.repository.findBy({ _id: id })
+        const user = await this.findById(id)
+        return user
     }
     
-    async findAll(): Promise<User[]> {
-       return await this.repository.find();
+    async all(): Promise<User[]> {
+       return await this.findAll()
     }
 
-    async deleteById(id: string): Promise<void> {
-        await this.repository.update(id,{ isActive: false })
+    async delete(id: string): Promise<void> {
+        await this.deleteById(id)
     }
 
     async initialize(){
@@ -36,12 +38,15 @@ export class UserRepository extends BaseRepository<User> implements IUsersReposi
     }
 
     async findByEmail(email: string): Promise<User[]> {
-        return await this.repository.findBy({ email: email });
+        try {
+            return await this.repository.findBy({ email: email });    
+        } catch (error) {
+            throw new CustomError(error.statusCode || 500, error.message )
+        }
+        
     }
     
-    public async save(user: User): Promise<void> {
-        // this.repository.insert(user)      
+    public async add(user: User): Promise<void> {
         this.save(user)
-        
     }
 }

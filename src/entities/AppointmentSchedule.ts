@@ -4,7 +4,7 @@ import { Patient } from "./Patient";
 import { PatientSchedule } from "./PatientSchedule";
 import { Professional } from "./Professional";
 
-@Entity('AppointmentScheduling')
+@Entity('AppointmentSchedule')
 export class AppointmentSchedule{
 
     @ObjectIdColumn()

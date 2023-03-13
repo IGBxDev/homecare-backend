@@ -2,13 +2,13 @@ POST http://localhost:3333/users HTTP/1.1
 Content-Type: application/json
 
 {
-     "name": "suport",
-     "email": "suport5@homecare.com.br",
+     "name": "adm",
+     "email": "a3@homecare.com.br",
      "password": "123456"
 }
 
 ###
-DELETE http://localhost:3333/users/63b6baba88e76428f8d0c68d HTTP/1.1
+DELETE http://localhost:3333/users/63f30bac1236e812d8b49362 HTTP/1.1
 Content-Type: application/json
 
 ###
@@ -17,12 +17,12 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:3333/users/63c8a3f70d04ec442497bd91 HTTP/1.1
+PUT http://localhost:3333/users/63f30bac1236e812d8b49362 HTTP/1.1
 Content-Type: application/json
 
 {
      "name": "suporte",
-     "email": "suport@homecare.com.br"
+     "email": "a3d33wm@homecare.com.br"
 }
 
 
@@ -36,7 +36,7 @@ Content-Type: application/json
     "mobile": "+55 (11) 91111-1111",
     "cpf": "114.222.222.01",
     "boardNumber": "565898/125",
-    "regionZoneCode": 5,
+    "regionZoneCode": 1,
     "address": {
           "logradouro": "Rua Doutor Araujo Castro",
           "number": "60",
@@ -85,3 +85,7 @@ Content-Type: application/json
       "cellPhone": "string",
       "email": "string"
 }
+
+###
+GET http://localhost:3333/ HTTP/1.1
+Content-Type: application/json

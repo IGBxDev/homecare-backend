@@ -12,7 +12,7 @@ export class CreatePatientUseCase{
         try {      
             const patient = new Patient(data)
             createPatientUseCaseValidation(patient)            
-            this.patientRepository.save(patient)
+            this.patientRepository.add(patient)
         }catch (error) {
             throw new CustomError(error.message, error.statusCode)
         }

@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createProfessionalController = exports.createProfessionalUseCase = void 0;
+const ProfessionalRepository_1 = require("../../../repositories/implementations/ProfessionalRepository");
+const CreateProfessionalController_1 = require("./CreateProfessionalController");
+const CreateProfessionalUseCase_1 = require("./CreateProfessionalUseCase");
+const data_source_1 = require("../../../data-source");
+const DataSourceConnection_1 = require("../../../dataBase/DataSourceConnection");
+const dataSourse = new DataSourceConnection_1.DataSourceConnection(data_source_1.AppDataSource);
+const professionalRepository = new ProfessionalRepository_1.ProfessionalRepository(dataSourse);
+const createProfessionalUseCase = new CreateProfessionalUseCase_1.CreateProfessionalUseCase(professionalRepository);
+exports.createProfessionalUseCase = createProfessionalUseCase;
+const createProfessionalController = new CreateProfessionalController_1.CreateProfessionalController(createProfessionalUseCase);
+exports.createProfessionalController = createProfessionalController;

@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteUserController = exports.deleteUserUseCase = void 0;
+const UserRepository_1 = require("../../../repositories/implementations/UserRepository");
+const DeleteUserController_1 = require("./DeleteUserController");
+const DeleteUserCase_1 = require("./DeleteUserCase");
+const data_source_1 = require("../../../data-source");
+const DataSourceConnection_1 = require("../../../dataBase/DataSourceConnection");
+const dataSourse = new DataSourceConnection_1.DataSourceConnection(data_source_1.AppDataSource);
+const userRepository = new UserRepository_1.UserRepository(dataSourse);
+const deleteUserUseCase = new DeleteUserCase_1.DeleteUserCase(userRepository);
+exports.deleteUserUseCase = deleteUserUseCase;
+const deleteUserController = new DeleteUserController_1.DeleteUserController(deleteUserUseCase);
+exports.deleteUserController = deleteUserController;

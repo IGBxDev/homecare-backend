@@ -7,7 +7,7 @@ export class DeletePatientUseCase{
     
     execute(id: string){
         try {
-            this.patientRepository.deleteById(id)    
+            this.patientRepository.delete(id)
         } catch (error) {
             throw new CustomError(error.message, error.statusCode)
         }

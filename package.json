@@ -12,7 +12,8 @@
 
     "build": "tsc",
 
-    "start": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts",
+    "start": "node public/server.js",
+    "startJs": "node public/server.js",
 
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts",
 
@@ -37,6 +38,8 @@
     "dotenv": "^16.0.3",
 
     "express": "^4.18.2",
+
+    "moment": "^2.29.4",
 
     "mongodb": "^3.7.3",
 

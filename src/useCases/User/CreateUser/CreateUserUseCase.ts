@@ -6,7 +6,7 @@ import { InvalidEmail, UserAlreadyExists } from "./CreateUserErrors";
 import { ICreateUserRequestDTO } from "./ICreateUserDTO";
 
 
-export class CreateUserUseCase {
+export class CreateUserUseCase{
 
     constructor(
        private usersRepository: IUsersRepository,
@@ -27,7 +27,7 @@ export class CreateUserUseCase {
     
             const user = new User(data)
     
-            await this.usersRepository
+            await this.usersRepository.add(user)            
     
             // await this.mailProvider.sendMail({
             //     to: {

@@ -1,19 +1,24 @@
-import { DataSource, Repository } from "typeorm";
 import { IDataSourse } from "../../dataBase/IDataSourse";
 import { IAddress } from "../../entities/Interfaces/IAddress";
 import { Patient } from "../../entities/Patient";
 import { IPatientRepository } from "../IPatientRepository";
+import { BaseRepository } from "./BaseRepository";
 
-export class PatientRepository implements IPatientRepository{
-    private repository: Repository<Patient>
+export class PatientRepository extends BaseRepository implements IPatientRepository{
 
-    constructor(private dataSourse: IDataSourse){
+    constructor(
+        public dataSourse: IDataSourse
+    )
+        {
+        super()
         this.initialize()    
     }
+
     findByAddress(address: IAddress): Promise<Patient[]> {
         throw new Error("Method not implemented.");
     }
-    findAll(): Promise<Patient[]> {
+
+    async all(): Promise<Patient[]> {
        return this.repository.find()
     }
 
@@ -22,7 +27,7 @@ export class PatientRepository implements IPatientRepository{
         this.repository = dbConnection.getRepository(Patient)
     }
 
-    async save(patient: Patient): Promise<void> {
+    async add(patient: Patient): Promise<void> {
         this.repository.save(patient)
     }
     
@@ -30,7 +35,7 @@ export class PatientRepository implements IPatientRepository{
         return this.repository.findBy({ id: id })
     }
 
-    async deleteById(id: string): Promise<void> {
+    async delete(id: string): Promise<void> {
         await this.repository.update(id,{ isActive: false })
     }
     

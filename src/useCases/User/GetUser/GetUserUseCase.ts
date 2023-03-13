@@ -9,7 +9,7 @@ export class GetUserUseCase {
     
     async execute(){
         try {
-            return await this.useRepository.findAll()      
+            return await this.useRepository.all()      
         } catch (error) {
             throw new CustomError(error.messagem, error.statusCode )
         }

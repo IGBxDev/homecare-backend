@@ -1,7 +1,7 @@
 import { CNPJResponse, ICNPJProvider } from "../ICNPJProvider";
 import axios from "axios";
 import https from 'https'
-import { CustomErro } from "../../useCases/Error/CustomError";
+import { CustomError } from "../../useCases/Error/CustomError";
 
 export class CNPJProvider implements ICNPJProvider{
     private url: string
@@ -22,27 +22,27 @@ export class CNPJProvider implements ICNPJProvider{
             const validacnpj = /^[0-9]{14}$/
 
             if(!validacnpj.test(cnpj)){
-                throw new CustomErro('Formato de CNPJ inválido',404)
+                throw new CustomError('Formato de CNPJ inválido',404)
             }
             
             const response = await instance.get(url)
             const cnpjReponse: CNPJResponse = response.data
             
             if(response.data?.erro){
-                throw new CustomErro('CNPJ não encontrado', 404)
+                throw new CustomError('CNPJ não encontrado', 404)
             }
             
             if(response.status == 429){
-                throw new CustomErro('Muitas requisições', 429)
+                throw new CustomError('Muitas requisições', 429)
             }
 
             if(response.status == 504){
-                throw new CustomErro('Timeout', 504)
+                throw new CustomError('Timeout', 504)
             }
 
             return cnpjReponse
         } catch (error) {
-            throw new CustomErro(error.message, error.statusCode)
+            throw new CustomError(error.message, error.statusCode)
         }        
     }
 }

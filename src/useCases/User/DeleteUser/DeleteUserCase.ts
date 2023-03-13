@@ -1,5 +1,5 @@
 import { IUsersRepository } from "../../../repositories/IUsersRepository";
-import {CustomErro, EmptiryId} from '../../Error/CustomError'
+import {CustomError, EmptyId} from '../../Error/CustomError'
 
 export class DeleteUserCase {
 
@@ -10,13 +10,13 @@ export class DeleteUserCase {
     async execute(userDelete: IDeleteUserRequestDTO){
         try {
             if(!userDelete.id || userDelete.id === undefined){
-                throw new EmptiryId()
+                throw new EmptyId()
             }
     
-            this.usersRepository.deleteById(userDelete.id)
+            this.usersRepository.delete(userDelete.id)
 
         } catch (error) {
-            throw new CustomErro(error.message, error.statusCode)
+            throw new CustomError (error.message, error.statusCode)
         }      
     }
 }

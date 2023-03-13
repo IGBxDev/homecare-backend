@@ -1,7 +1,7 @@
 import { User } from "../../../entities/User";
 import { IUsersRepository } from "../../../repositories/IUsersRepository";
-import { CustomErro } from "../../Error/CustomError";
-import { EmailIsDifferentFromIdFound, InvalidaId, InvalidEmail, InvalidName, UserNotFound } from "./EditUserErrors";
+import { CustomError } from "../../Error/CustomError";
+import { EmailIsDifferentFromIdFound, InvalidaId, InvalidEmail, InvalidName, UserAlreadyExists, UserNotFound } from "./EditUserErrors";
 import { EditUserRequestType, IEditUserRequestDTO } from "./IEditUserDTO";
 
 export class EditUserUseCase{
@@ -33,17 +33,17 @@ export class EditUserUseCase{
 
             const userAlreadyExists = await this.useRepository.findByEmail(user.email)
 
-            if(!userAlreadyExists){
+            if(userAlreadyExists.length === 0){
                 throw new UserNotFound()
             }
 
-            if(userAlreadyExists[0]._id.toString() != user.id.toString()){
+            if(userAlreadyExists[0]?._id.toString() != user.id.toString()){
                 throw new EmailIsDifferentFromIdFound()
             }
             
-            // this.useRepository.update(user)
+            this.useRepository.edit(user)
         } catch (error) {
-            throw new CustomErro(error.message, error.statusCode || 500 )
+            throw new CustomError(error.message, error.statusCode || 500 )
         }
     }
 }

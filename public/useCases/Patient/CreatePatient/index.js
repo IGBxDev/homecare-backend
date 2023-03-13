@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createPatientUseCase = exports.createPatientController = void 0;
+const CreatePatientController_1 = require("./CreatePatientController");
+const CreatePatientUseCase_1 = require("./CreatePatientUseCase");
+const PatientRepository_1 = require("../../../repositories/implementations/PatientRepository");
+const data_source_1 = require("../../../data-source");
+const DataSourceConnection_1 = require("../../../dataBase/DataSourceConnection");
+const dataSourse = new DataSourceConnection_1.DataSourceConnection(data_source_1.AppDataSource);
+const repository = new PatientRepository_1.PatientRepository(dataSourse);
+const createPatientUseCase = new CreatePatientUseCase_1.CreatePatientUseCase(repository);
+exports.createPatientUseCase = createPatientUseCase;
+const createPatientController = new CreatePatientController_1.CreatePatientController(createPatientUseCase);
+exports.createPatientController = createPatientController;

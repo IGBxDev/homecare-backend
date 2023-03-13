@@ -1,4 +1,7 @@
-import { BaseEntity, Entity, EntityManager, Repository } from "typeorm"
-export interface IBaseRepository<T extends Object>{
-    save(entity: T): Promise<void>   
+export interface IBaseRepository{
+    save(entity: any):Promise<void>    
+    findAll(): Promise<any[]>
+    deleteById(id: string): Promise<void>
+    findById(id: string): Promise<any[]>
+    update(entity: any): Promise<void>
 }

@@ -1,9 +1,9 @@
 import { Repository } from "typeorm";
 import { IDataSourse } from "../../dataBase/IDataSourse";
-import { AppointmentScheduling } from "../../entities/AppointmentSchedule"
+import { AppointmentSchedule } from "../../entities/AppointmentSchedule"
 import { IAppointmentSchedulingRepository } from "../IAppointmentSchedulingRepository";
 export class AppointmentSchedulingRepository implements IAppointmentSchedulingRepository{
-    private repository: Repository<AppointmentScheduling>
+    private repository: Repository<AppointmentSchedule>
 
     constructor(private dataSourse: IDataSourse){
        this.initialize()
@@ -11,18 +11,18 @@ export class AppointmentSchedulingRepository implements IAppointmentSchedulingRe
 
     async initialize (){
         const dbConnection = await this.dataSourse.connection()
-        this.repository = dbConnection.getRepository(AppointmentScheduling)
+        this.repository = dbConnection.getRepository(AppointmentSchedule)
     }
 
-    async save(data: AppointmentScheduling): Promise<void> {
+    async save(data: AppointmentSchedule): Promise<void> {
         this.repository.save(data)
     }
 
-    async findAll(): Promise<AppointmentScheduling[]> {
+    async findAll(): Promise<AppointmentSchedule[]> {
         return this.repository.find()
     }
     
-    async findById(id: string): Promise<AppointmentScheduling[]> {
+    async findById(id: string): Promise<AppointmentSchedule[]> {
         return await this.repository.findBy({ _id: id })
     }
 

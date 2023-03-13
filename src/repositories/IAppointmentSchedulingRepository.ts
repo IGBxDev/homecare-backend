@@ -1,8 +1,8 @@
-import { AppointmentScheduling } from "../entities/AppointmentSchedule"
+import { AppointmentSchedule } from "../entities/AppointmentSchedule"
 
 export interface IAppointmentSchedulingRepository{
-     save(data: AppointmentScheduling ): Promise<void>
-     findAll():Promise<AppointmentScheduling[]>
-     findById(id: string): Promise<AppointmentScheduling[]>
+     save(data: AppointmentSchedule ): Promise<void>
+     findAll():Promise<AppointmentSchedule[]>
+     findById(id: string): Promise<AppointmentSchedule[]>
      deleteById(id: string): Promise<void>
 }

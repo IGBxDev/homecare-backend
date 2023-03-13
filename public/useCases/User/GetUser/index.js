@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getUserController = exports.getUserUseCase = void 0;
+const UserRepository_1 = require("../../../repositories/implementations/UserRepository");
+const GetUserController_1 = require("./GetUserController");
+const GetUserUseCase_1 = require("./GetUserUseCase");
+const data_source_1 = require("../../../data-source");
+const DataSourceConnection_1 = require("../../../dataBase/DataSourceConnection");
+const dataSourse = new DataSourceConnection_1.DataSourceConnection(data_source_1.AppDataSource);
+const userRepository = new UserRepository_1.UserRepository(dataSourse);
+const getUserUseCase = new GetUserUseCase_1.GetUserUseCase(userRepository);
+exports.getUserUseCase = getUserUseCase;
+const getUserController = new GetUserController_1.GetUserController(getUserUseCase);
+exports.getUserController = getUserController;

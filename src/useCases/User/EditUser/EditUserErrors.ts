@@ -40,7 +40,7 @@ export class UserAlreadyExists extends CustomError{
 export class UserNotFound extends CustomError{
     statusCode = 400
     constructor(){
-        super('Usuário já existe')
+        super('Usuário não encontrado')
         Object.setPrototypeOf(this, UserNotFound.prototype);
 
     }

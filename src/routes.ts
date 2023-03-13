@@ -53,4 +53,7 @@ router.post('/patient', (request, response) =>{
     return deletePatientController.handle(request, response)
 })
 
+router.get('/', (request, response) =>{
+    return response.status(200).json({ message: 'Home Care System: Backend', status: 'Online' })
+})
 export { router }
