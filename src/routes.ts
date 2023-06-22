@@ -9,6 +9,7 @@ import { getCepController } from "./useCases/CEP";
 import { getCnpjController } from "./useCases/CNPJ";
 import { createPatientController } from "./useCases/Patient/CreatePatient";
 import { deletePatientController } from "./useCases/Patient/DeletePatient";
+import { getPatientController } from './useCases/Patient/GetPatient'
 
 const router = Router()
 
@@ -53,7 +54,15 @@ router.post('/patient', (request, response) =>{
     return deletePatientController.handle(request, response)
 })
 
+router.get('/patient',(request, response)=>{
+    return getPatientController.handle(request, response)
+})
+
+
 router.get('/', (request, response) =>{
     return response.status(200).json({ message: 'Home Care System: Backend', status: 'Online' })
 })
+
+
+
 export { router }

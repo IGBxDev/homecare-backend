@@ -28,7 +28,7 @@ export class Patient{
     public nationality: string
 
     @Column()
-    public Profession: string
+    public profession: string
 
     @Column((type) => Address)
     public address: Address

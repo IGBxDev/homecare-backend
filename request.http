@@ -87,5 +87,8 @@ Content-Type: application/json
 }
 
 ###
+###
+GET http://localhost:3333/patient HTTP/1.1
+
 GET http://localhost:3333/ HTTP/1.1
 Content-Type: application/json
